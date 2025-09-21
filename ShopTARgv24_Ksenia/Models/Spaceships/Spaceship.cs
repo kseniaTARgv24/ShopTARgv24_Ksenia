@@ -2,7 +2,7 @@
 
 namespace ShopTARgv24_Ksenia.Models.Spaceships
 {
-    public class Spaceship
+    public class Kindergarten
     {
         public Guid? Id { get; set; }
         public string? Name { get; set; }

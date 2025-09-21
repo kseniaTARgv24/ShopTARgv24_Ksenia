@@ -30,6 +30,25 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
                 {
                     table.PrimaryKey("PK_Spaceships", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Kindergarten",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    GroupName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ChildrenCount = table.Column<int>(type: "int", nullable: true),
+                    KindergartenName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TeacherName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Kindergarten", x => x.Id);
+                });
+
+
         }
 
         /// <inheritdoc />
@@ -37,6 +56,9 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Spaceships");
+
+            migrationBuilder.DropTable(
+                name: "Kindergarten");
         }
     }
 }

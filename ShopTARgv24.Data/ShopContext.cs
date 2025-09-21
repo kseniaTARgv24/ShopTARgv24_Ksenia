@@ -10,6 +10,7 @@ namespace ShopTARgv24_Ksenia.Data
         }
 
         public DbSet<Spaceship> Spaceship { get; set; }
+        public DbSet<Kindergarten> Kindergarten { get; set; }
 
     }
 }

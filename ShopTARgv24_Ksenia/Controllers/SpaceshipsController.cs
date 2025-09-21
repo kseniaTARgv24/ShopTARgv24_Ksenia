@@ -55,7 +55,7 @@ namespace ShopTARgv24_Ksenia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,TypeName,BuiltDate,Crew,EnginePower,Passengers,InnerVolume")] Spaceship spaceship)
+        public async Task<IActionResult> Create([Bind("Id,Name,TypeName,BuiltDate,Crew,EnginePower,Passengers,InnerVolume")] Kindergarten spaceship)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ShopTARgv24_Ksenia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid? id, [Bind("Id,Name,TypeName,BuiltDate,Crew,EnginePower,Passengers,InnerVolume")] Spaceship spaceship)
+        public async Task<IActionResult> Edit(Guid? id, [Bind("Id,Name,TypeName,BuiltDate,Crew,EnginePower,Passengers,InnerVolume")] Kindergarten spaceship)
         {
             if (id != spaceship.Id)
             {
