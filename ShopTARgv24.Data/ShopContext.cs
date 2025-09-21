@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShopTARgv24_Ksenia.Models;
+using ShopTARgv24_Ksenia.Core.Domain;
 
 namespace ShopTARgv24_Ksenia.Data
 {

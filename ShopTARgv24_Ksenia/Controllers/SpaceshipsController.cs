@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShopTARgv24_Ksenia.Data;
 using ShopTARgv24_Ksenia.Models;
+using ShopTARgv24_Ksenia.Models.Spaceships;
 
 namespace ShopTARgv24_Ksenia.Controllers
 {

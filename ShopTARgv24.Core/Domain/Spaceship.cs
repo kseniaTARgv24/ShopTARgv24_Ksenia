@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;  //added???
 
-namespace ShopTARgv24_Ksenia.Models
+namespace ShopTARgv24_Ksenia.Core.Domain
 {
     public class Spaceship
     {

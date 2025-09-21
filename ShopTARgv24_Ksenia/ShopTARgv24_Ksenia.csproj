@@ -17,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\ShopTARgv24.ApplicationServices\ShopTARgv24_Ksenia.ApplicationServices.csproj" />
+    <ProjectReference Include="..\ShopTARgv24.Core\ShopTARgv24_Ksenia.Core.csproj" />
+    <ProjectReference Include="..\ShopTARgv24.Data\ShopTARgv24_Ksenia.Data.csproj" />
   </ItemGroup>
 
 </Project>

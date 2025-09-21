@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ShopTARgv24_Ksenia.ApplicationServices.Services;
+using ShopTARgv24_Ksenia.Core.ServiceInterface;         //?????????????????????   
 using ShopTARgv24_Ksenia.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,10 @@ builder.Services.AddControllersWithViews();
 // Подключаем базу
 builder.Services.AddDbContext<ShopContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ShopContext")));
+
+// Добавляем сервисы
+builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
+builder.Services.AddScoped<IFileServices, FileServices>();
 
 var app = builder.Build();
 
