@@ -55,5 +55,10 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
                 }
             }
         }
+
+        public void FilesToApiForKindergarten(Kindergarten kindergarten)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace ShopTARgv24_Ksenia.Controllers
         public IActionResult Index()
         {
             var spaceships = _context.Spaceships
-                .Select(s => new SpaceshipsIndexViewModel
+                .Select(s => new KindergartensIndexViewModel
                 {
                     Id = s.Id,
                     Name = s.Name,
@@ -41,12 +41,12 @@ namespace ShopTARgv24_Ksenia.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var vm = new SpaceshipCreateUpdateVeiwModel();
+            var vm = new KindergartenCreateUpdateVeiwModel();
             return View("CreateUpdate", vm);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(SpaceshipCreateUpdateVeiwModel vm)
+        public async Task<IActionResult> Create(KindergartenCreateUpdateVeiwModel vm)
         {
             var dto = new SpaceshipDto
             {
@@ -105,7 +105,7 @@ namespace ShopTARgv24_Ksenia.Controllers
             var spaceship = await _spaceshipsServices.DetailAsync(id);
             if (spaceship == null) return NotFound();
 
-            var vm = new SpaceshipCreateUpdateVeiwModel
+            var vm = new KindergartenCreateUpdateVeiwModel
             {
                 Id = spaceship.Id,
                 Name = spaceship.Name,
@@ -123,7 +123,7 @@ namespace ShopTARgv24_Ksenia.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(SpaceshipCreateUpdateVeiwModel vm)
+        public async Task<IActionResult> Update(KindergartenCreateUpdateVeiwModel vm)
         {
             var dto = new SpaceshipDto
             {

@@ -2,7 +2,7 @@
 
 namespace ShopTARgv24_Ksenia.Models.Spaceships
 {
-    public class SpaceshipsIndexViewModel
+    public class KindergartensIndexViewModel
     {
         public Guid? Id { get; set; }
         public string? Name { get; set; }
@@ -14,7 +14,6 @@ namespace ShopTARgv24_Ksenia.Models.Spaceships
         public int? InnerVolume { get; set; }
 
         public List<IFormFile> Files { get; set; }
-        public List<ImageViewModel> Images { get; set; } = new List<ImageViewModel>();
 
 
     }

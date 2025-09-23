@@ -28,15 +28,54 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("ExistingFilePath")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("KindergartenId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("SpaceshipId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("KindergartenId");
+
+                    b.HasIndex("SpaceshipId");
+
                     b.ToTable("FileToApis");
+                });
+
+            modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.Kindergarten", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("ChildrenCount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GroupName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KindergartenName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeacherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Kindergartens");
                 });
 
             modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.Spaceship", b =>
@@ -75,6 +114,21 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Spaceships");
+                });
+
+            modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.FileToApi", b =>
+                {
+                    b.HasOne("ShopTARgv24_Ksenia.Core.Domain.Kindergarten", "Kindergarten")
+                        .WithMany()
+                        .HasForeignKey("KindergartenId");
+
+                    b.HasOne("ShopTARgv24_Ksenia.Core.Domain.Spaceship", "Spaceship")
+                        .WithMany()
+                        .HasForeignKey("SpaceshipId");
+
+                    b.Navigation("Kindergarten");
+
+                    b.Navigation("Spaceship");
                 });
 #pragma warning restore 612, 618
         }
