@@ -8,7 +8,7 @@ using ShopTARgv24_Ksenia.Data;
 
 #nullable disable
 
-namespace ShopTARgv24_Ksenia.Migrations
+namespace ShopTARgv24_Ksenia.Data.Migrations
 {
     [DbContext(typeof(ShopContext))]
     partial class ShopContextModelSnapshot : ModelSnapshot
