@@ -23,7 +23,7 @@ namespace ShopTARgv24_Ksenia.Controllers
         // GET: Spaceships
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Spaceship.ToListAsync());
+            return View(await _context.Spaceships.ToListAsync());
         }
 
         // GET: Spaceships/Details/5
@@ -34,7 +34,7 @@ namespace ShopTARgv24_Ksenia.Controllers
                 return NotFound();
             }
 
-            var spaceship = await _context.Spaceship
+            var spaceship = await _context.Spaceships
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (spaceship == null)
             {
@@ -74,7 +74,7 @@ namespace ShopTARgv24_Ksenia.Controllers
                 return NotFound();
             }
 
-            var spaceship = await _context.Spaceship.FindAsync(id);
+            var spaceship = await _context.Spaceships.FindAsync(id);
             if (spaceship == null)
             {
                 return NotFound();
@@ -125,7 +125,7 @@ namespace ShopTARgv24_Ksenia.Controllers
                 return NotFound();
             }
 
-            var spaceship = await _context.Spaceship
+            var spaceship = await _context.Spaceships
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (spaceship == null)
             {
@@ -140,10 +140,10 @@ namespace ShopTARgv24_Ksenia.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid? id)
         {
-            var spaceship = await _context.Spaceship.FindAsync(id);
+            var spaceship = await _context.Spaceships.FindAsync(id);
             if (spaceship != null)
             {
-                _context.Spaceship.Remove(spaceship);
+                _context.Spaceships.Remove(spaceship);
             }
 
             await _context.SaveChangesAsync();
@@ -152,7 +152,7 @@ namespace ShopTARgv24_Ksenia.Controllers
 
         private bool SpaceshipExists(Guid? id)
         {
-            return _context.Spaceship.Any(e => e.Id == id);
+            return _context.Spaceships.Any(e => e.Id == id);
         }
     }
 }

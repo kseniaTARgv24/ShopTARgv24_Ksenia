@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ShopTARgv24.Data;
+using ShopTARgv24_Ksenia.Data;
 
 #nullable disable
 
-namespace ShopTARgv24.Data.Migrations
+namespace ShopTARgv24_Ksenia.Data.Migrations
 {
-    [DbContext(typeof(ShopTARgv24Context))]
+    [DbContext(typeof(ShopContext))]
     [Migration("20250916122200_FileToApplication")]
     partial class FileToApplication
     {

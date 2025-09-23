@@ -8,12 +8,12 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
 {
     public class FileServices : IFileServices
     {
-        private readonly ShopTARgv24Context _context;
+        private readonly ShopContext _context;
         private readonly IHostEnvironment _webHost;
 
         public FileServices
             (
-                ShopTARgv24Context context,
+                ShopContext context,
                 IHostEnvironment webHost
             )
         {
@@ -47,7 +47,7 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
                         {
                             Id = Guid.NewGuid(),
                             ExistingFilePath = uniqueFileName,
-                            SpaceshipId = spaceship.Id
+                            SpaceshipId = spaceship.Id.Value
                         };
 
                         _context.FileToApis.AddAsync(path);

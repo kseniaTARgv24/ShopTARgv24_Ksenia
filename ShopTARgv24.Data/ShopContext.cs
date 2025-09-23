@@ -3,13 +3,16 @@ using ShopTARgv24_Ksenia.Core.Domain;
 
 namespace ShopTARgv24_Ksenia.Data
 {
+
     public class ShopContext : DbContext 
     {
-        public ShopContext(DbContextOptions<ShopContext> options) : base(options) 
-        { 
-        }
 
-        public DbSet<Spaceship> Spaceship { get; set; }
+        public ShopContext(DbContextOptions<ShopContext> options) : base(options) { }
+
+
+        public DbSet<FileToApi> FileToApis { get; set; }
+        public DbSet<Spaceship> Spaceships { get; set; }
+
 
     }
 }

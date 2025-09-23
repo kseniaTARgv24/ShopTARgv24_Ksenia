@@ -9,7 +9,7 @@ builder.Services.AddControllersWithViews();
 
 // Подключаем базу
 builder.Services.AddDbContext<ShopContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ShopContext")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnections")));
 
 // Добавляем сервисы
 builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
