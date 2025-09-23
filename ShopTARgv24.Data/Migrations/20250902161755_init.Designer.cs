@@ -31,7 +31,7 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("BuiltDate")
+                    b.Property<DateTime?>("BuildDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("CreatedAt")

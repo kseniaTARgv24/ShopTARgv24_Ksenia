@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ShopTARgv24_Ksenia.Core.Dto
+namespace ShopTARgv24_Ksenia.Models.Spaceships
 {
-    public class SpaceshipDto
+    public class SpaceshipsIndexViewModel
     {
         public Guid? Id { get; set; }
         public string? Name { get; set; }
@@ -13,13 +13,9 @@ namespace ShopTARgv24_Ksenia.Core.Dto
         public int? Passengers { get; set; }
         public int? InnerVolume { get; set; }
 
-        //Tuleb teha muutuja Files ja see peab olema listis
         public List<IFormFile> Files { get; set; }
+        public List<ImageViewModel> Images { get; set; } = new List<ImageViewModel>();
 
-        public IEnumerable<FileToApiDto> FileToApiDtos { get; set; }
-            = new List<FileToApiDto>();
 
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? ModifiedAt { get; set; }
     }
 }

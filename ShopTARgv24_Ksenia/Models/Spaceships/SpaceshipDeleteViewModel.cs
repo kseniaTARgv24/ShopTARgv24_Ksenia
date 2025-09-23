@@ -1,13 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;  //added???
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ShopTARgv24_Ksenia.Core.Domain
+namespace ShopTARgv24_Ksenia.Models.Spaceships
 {
-    public class Spaceship
+    public class SpaceshipDeleteViewModel
     {
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         public string? Name { get; set; }
         public string? TypeName { get; set; }
-        public DateTime BuildDate { get; set; }
+        public DateTime? BuildDate { get; set; }
         public int? Crew { get; set; }
         public int? EnginePower { get; set; }
         public int? Passengers { get; set; }
@@ -15,6 +15,5 @@ namespace ShopTARgv24_Ksenia.Core.Domain
 
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
-
     }
 }

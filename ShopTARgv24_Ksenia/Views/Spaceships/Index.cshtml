@@ -1,73 +1,48 @@
-﻿@model IEnumerable<ShopTARgv24_Ksenia.Core.Domain.Spaceship>   //— список кораблей, который передаёт контроллер
+﻿@model IEnumerable<ShopTARgv24_Ksenia.Models.Spaceships.SpaceshipsIndexViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    int nr = 1;
+    string mark = "*";
 }
 
-<h1>Index</h1>
+<div class="text-center">
+    <h1 class="display-4">Table SpaceShips</h1>
+</div>
+<div class="text-end">
+    <a asp-action="create" asp-controller="spaceships" type="submit" class="btn btn-primary">Create</a>
+</div>
+<form action="/" method="post">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nr</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Buil Date</th>
+                <th scope="col">Crew</th>
+                <th scope="col">Buttons</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var spaceships in Model)
+            {
+                <tr>
+                    <td>@nr. @mark</td>
+                    <td>@spaceships.Name</td>
+                    <td>@spaceships.TypeName</td>
+                    <td>@spaceships.BuildDate</td>
+                    <td>@spaceships.Crew</td>
+                    <td>
+                        <a asp-action="details" asp-controller="spaceships" asp-route-id="@spaceships.Id" class="btn btn-outline-primary">Details</a>
+                        <a asp-action="update" asp-controller="spaceships" asp-route-id="@spaceships.Id" class="btn btn-outline-warning">Update</a>
+                        <a asp-action="delete" asp-controller="spaceships" asp-route-id="@spaceships.Id" class="btn btn-outline-danger">Delete</a>
+                    </td>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TypeName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BuiltDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Crew)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EnginePower)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Passengers)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InnerVolume)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BuiltDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Crew)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EnginePower)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Passengers)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InnerVolume)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                @* asp-action и asp-route-id — специальные теги Razor, которые создают ссылки на методы контроллера *@
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
+                </tr>
+                nr++;
+                //nr += 1;
+                mark += "*";
+            }
+        </tbody>
+    </table>
+</form>

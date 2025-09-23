@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopTARgv24_Ksenia.Data;
 
-
 #nullable disable
 
 namespace ShopTARgv24_Ksenia.Migrations
@@ -23,13 +22,33 @@ namespace ShopTARgv24_Ksenia.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ShopTARgv24_Ksenia.Models.Spaceship", b =>
+            modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.FileToApi", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("BuiltDate")
+                    b.Property<string>("ExistingFilePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("SpaceshipId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileToApis");
+                });
+
+            modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.Spaceship", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("BuildDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("Crew")
@@ -40,6 +59,9 @@ namespace ShopTARgv24_Ksenia.Migrations
 
                     b.Property<int?>("InnerVolume")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -52,7 +74,7 @@ namespace ShopTARgv24_Ksenia.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Spaceship");
+                    b.ToTable("Spaceships");
                 });
 #pragma warning restore 612, 618
         }

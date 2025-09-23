@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ShopTARgv24_Ksenia.Data.Migrations
+namespace 
+    TARgv24_Ksenia.Data.Migrations
 {
     /// <inheritdoc />
     public partial class init : Migration
@@ -18,7 +19,7 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TypeName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BuiltDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    BuildDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Crew = table.Column<int>(type: "int", nullable: true),
                     EnginePower = table.Column<int>(type: "int", nullable: true),
                     Passengers = table.Column<int>(type: "int", nullable: true),

@@ -12,20 +12,20 @@ using ShopTARgv24_Ksenia.Data;
 namespace ShopTARgv24_Ksenia.Data.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20250916122200_FileToApplication")]
-    partial class FileToApplication
+    [Migration("20250923121915_Init2")]
+    partial class Init2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.8")
+                .HasAnnotation("ProductVersion", "9.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ShopTARgv24.Core.Domain.FileToApi", b =>
+            modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.FileToApi", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,13 +42,13 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
                     b.ToTable("FileToApis");
                 });
 
-            modelBuilder.Entity("ShopTARgv24.Core.Domain.Spaceship", b =>
+            modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.Spaceship", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("BuildDate")
+                    b.Property<DateTime>("BuildDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("CreatedAt")

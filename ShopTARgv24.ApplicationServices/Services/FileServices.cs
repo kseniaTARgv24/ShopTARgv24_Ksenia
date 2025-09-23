@@ -47,7 +47,7 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
                         {
                             Id = Guid.NewGuid(),
                             ExistingFilePath = uniqueFileName,
-                            SpaceshipId = spaceship.Id.Value
+                            SpaceshipId = spaceship.Id
                         };
 
                         _context.FileToApis.AddAsync(path);

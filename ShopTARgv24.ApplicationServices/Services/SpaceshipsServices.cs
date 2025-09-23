@@ -29,7 +29,7 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
             spaceship.Id = Guid.NewGuid();
             spaceship.Name = dto.Name;
             spaceship.TypeName = dto.TypeName;
-            spaceship.BuiltDate = dto.BuiltDate;
+            spaceship.BuildDate = (DateTime)dto.BuildDate;
             spaceship.Crew = dto.Crew;
             spaceship.EnginePower = dto.EnginePower;
             spaceship.Passengers = dto.Passengers;
@@ -67,10 +67,10 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
         {
             Spaceship domain = new();
 
-            domain.Id = dto.Id;
+            domain.Id = (Guid)dto.Id;
             domain.Name = dto.Name;
             domain.TypeName = dto.TypeName;
-            domain.BuiltDate = dto.BuiltDate;
+            domain.BuildDate = (DateTime)dto.BuildDate;
             domain.Crew = dto.Crew;
             domain.EnginePower = dto.EnginePower;
             domain.Passengers = dto.Passengers;
