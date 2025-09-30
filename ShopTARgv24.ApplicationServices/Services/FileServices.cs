@@ -1,8 +1,9 @@
-﻿using ShopTARgv24_Ksenia.Core.Dto;
-using ShopTARgv24_Ksenia.Data;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using ShopTARgv24_Ksenia.Core.Domain;
+using ShopTARgv24_Ksenia.Core.Dto;
 using ShopTARgv24_Ksenia.Core.ServiceInterface;
+using ShopTARgv24_Ksenia.Data;
 
 namespace ShopTARgv24_Ksenia.ApplicationServices.Services
 {
@@ -23,21 +24,23 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
 
         public void FilesToApi(SpaceshipDto dto, Spaceship spaceship)
         {
+
             if (dto.Files != null && dto.Files.Count > 0)
             {
-                if (!Directory.Exists(_webHost.ContentRootPath + "\\multipleFileUpload\\"))
+                if (!Directory.Exists(_webHost.ContentRootPath + "\\wwwroot\\multipleFileUpload\\"))
                 {
-                    Directory.CreateDirectory(_webHost.ContentRootPath + "\\multipleFileUpload\\");
+                    Directory.CreateDirectory(_webHost.ContentRootPath + "\\wwwroot\\multipleFileUpload\\");
                 }
 
                 foreach (var file in dto.Files)
                 {
-                    //muutuja string uploadsFolder ja sinna laetakse failid
-                    string uploadsFolder = Path.Combine(_webHost.ContentRootPath, "multipleFileUpload");
+                    // muutuja string uploadFolder ja siina laetakse failid
+                    string uploadFolder = Path.Combine(_webHost.ContentRootPath, "wwwroot", "multipleFileUpload");
+
                     //muutuja string uniqueFileName ja siin genereeritakse uus Guid ja lisatakse see faili ette
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.Name;
-                    //muutuja string filePath kombineeritakse ja lisatakse koos kausta unikaalse nimega
-                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                    // muutuja string filePath kombineeritakse ja lisatakse koos kausta unikaalse nimega
+                    string filePath = Path.Combine(uploadFolder, uniqueFileName);
 
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
@@ -54,6 +57,54 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
                     }
                 }
             }
+        }
+
+        public async Task<FileToApi?> RemoveImageFromApi(FileToApiDto dto)
+        {
+
+            // Meil on vaja leida file andmebaasist läbi id ülesse
+            // 1) Находим запись файла в БД
+            var imageId = await _context.FileToApis
+                .FirstOrDefaultAsync(x => x.Id == dto.Id);  // чтобы найти что в базе данных
+
+            var filePath = _webHost.ContentRootPath + "\\wwwroot\\multipleFileUpload\\"
+                + imageId.ExistingFilePath;
+
+            // Kui fail on olemas, siis kustuta ära 
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            // 4) Удаляем запись из базы
+            _context.FileToApis.Remove(imageId);
+            await _context.SaveChangesAsync();
+
+            return imageId;
+        }
+        public async Task<List<FileToApi>> RemoveImagesFromAppi(FileToApiDto[] dtos)
+        {
+            //foreach, milles sees toimub failide kustutamine
+            foreach (var dto in dtos)
+            {
+                var imageId = await _context.FileToApis
+                .FirstOrDefaultAsync(x => x.Id == dto.Id);  // чтобы найти что в базе данных
+
+                var filePath = _webHost.ContentRootPath + "\\wwwroot\\multipleFileUpload\\"
+                    + imageId.ExistingFilePath;
+
+                // Kui fail on olemas, siis kustuta ära 
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+
+                // 4) Удаляем запись из базы
+                _context.FileToApis.Remove(imageId);
+                await _context.SaveChangesAsync();
+            }
+
+            return null;
         }
     }
 }

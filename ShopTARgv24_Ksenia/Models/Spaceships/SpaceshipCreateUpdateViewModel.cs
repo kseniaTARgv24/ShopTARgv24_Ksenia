@@ -15,7 +15,7 @@ namespace ShopTARgv24_Ksenia.Models.Spaceships
         public int? InnerVolume { get; set; }
 
         public List<IFormFile> Files { get; set; }
-        public List<ImageViewModel> Images { get; set; }
+        public List<ImageViewModel> Image { get; set; }
             = new List<ImageViewModel>();
 
         public DateTime? CreatedAt { get; set; }

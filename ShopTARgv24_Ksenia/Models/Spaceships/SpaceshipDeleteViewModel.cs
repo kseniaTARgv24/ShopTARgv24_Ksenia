@@ -13,7 +13,7 @@ namespace ShopTARgv24_Ksenia.Models.Spaceships
         public int? Passengers { get; set; }
         public int? InnerVolume { get; set; }
 
-        public List<ImageViewModel> Images { get; set; }
+        public List<ImageViewModel> ImageViewModels { get; set; }
             = new List<ImageViewModel>();
 
         public DateTime? CreatedAt { get; set; }

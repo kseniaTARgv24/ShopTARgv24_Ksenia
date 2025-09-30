@@ -2,8 +2,6 @@
 using ShopTARgv24_Ksenia.Core.ServiceInterface;
 using ShopTARgv24_Ksenia.Data;
 using Microsoft.EntityFrameworkCore;
-using ShopTARgv24_Ksenia.ApplicationServices.Services;
-using ShopTARgv24_Ksenia.Core.ServiceInterface;
 
 
 namespace ShopTARgv24_Ksenia
@@ -36,6 +34,8 @@ namespace ShopTARgv24_Ksenia
 
             app.UseHttpsRedirection();
             app.UseRouting();
+
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 

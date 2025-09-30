@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ShopTARgv24_Ksenia.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class AddImages : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,6 +43,31 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
                 {
                     table.PrimaryKey("PK_Spaceships", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Image",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SpaceshipId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Image", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Image_Spaceships_SpaceshipId",
+                        column: x => x.SpaceshipId,
+                        principalTable: "Spaceships",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Image_SpaceshipId",
+                table: "Image",
+                column: "SpaceshipId");
         }
 
         /// <inheritdoc />
@@ -50,6 +75,9 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "FileToApis");
+
+            migrationBuilder.DropTable(
+                name: "Image");
 
             migrationBuilder.DropTable(
                 name: "Spaceships");

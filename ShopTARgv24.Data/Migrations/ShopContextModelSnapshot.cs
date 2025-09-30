@@ -39,6 +39,28 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
                     b.ToTable("FileToApis");
                 });
 
+            modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("SpaceshipId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SpaceshipId");
+
+                    b.ToTable("Image");
+                });
+
             modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.Spaceship", b =>
                 {
                     b.Property<Guid>("Id")
@@ -75,6 +97,22 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Spaceships");
+                });
+
+            modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.Image", b =>
+                {
+                    b.HasOne("ShopTARgv24_Ksenia.Core.Domain.Spaceship", "Spaceship")
+                        .WithMany("Images")
+                        .HasForeignKey("SpaceshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Spaceship");
+                });
+
+            modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.Spaceship", b =>
+                {
+                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }

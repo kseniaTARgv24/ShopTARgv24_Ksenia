@@ -24,4 +24,8 @@
     <ProjectReference Include="..\ShopTARgv24.Data\ShopTARgv24_Ksenia.Data.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<Folder Include="wwwroot\multipleFileUpload\" />
+	</ItemGroup>
+
 </Project>

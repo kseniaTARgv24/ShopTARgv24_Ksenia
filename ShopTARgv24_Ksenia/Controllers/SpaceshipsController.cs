@@ -1,17 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using ShopTARgv24_Ksenia.Core.Domain;
 using ShopTARgv24_Ksenia.Core.Dto;
 using ShopTARgv24_Ksenia.Core.ServiceInterface;
 using ShopTARgv24_Ksenia.Data;
 using ShopTARgv24_Ksenia.Models.Spaceships;
-using static System.Net.Mime.MediaTypeNames;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+
 
 namespace ShopTARgv24_Ksenia.Controllers
 {
@@ -67,7 +60,7 @@ namespace ShopTARgv24_Ksenia.Controllers
                 CreatedAt = vm.CreatedAt,
                 ModifiedAt = vm.ModifiedAt,
                 Files = vm.Files,
-                FileToApiDtos = vm.Images
+                FileToApiDtos = vm.Image
                     .Select(x => new FileToApiDto
                     {
                         Id = x.ImageId,
@@ -116,7 +109,7 @@ namespace ShopTARgv24_Ksenia.Controllers
             vm.InnerVolume = spaceship.InnerVolume;
             vm.CreatedAt = spaceship.CreatedAt;
             vm.ModifiedAt = spaceship.ModifiedAt;
-            vm.Images.AddRange(images);
+            vm.ImageViewModels.AddRange(images);
 
 
             return View(vm);
@@ -166,7 +159,7 @@ namespace ShopTARgv24_Ksenia.Controllers
             vm.InnerVolume = update.InnerVolume;
             vm.CreatedAt = update.CreatedAt;
             vm.ModifiedAt = update.ModifiedAt;
-            vm.Images.AddRange(images);
+            vm.Image.AddRange(images);
 
 
             return View("CreateUpdate", vm);
@@ -188,7 +181,7 @@ namespace ShopTARgv24_Ksenia.Controllers
                 CreatedAt = vm.CreatedAt,
                 ModifiedAt = vm.ModifiedAt,
                 Files = vm.Files,
-                FileToApiDtos = vm.Images
+                FileToApiDtos = vm.Image
                     .Select(x => new FileToApiDto
                     {
                         Id = x.ImageId,
@@ -226,7 +219,7 @@ namespace ShopTARgv24_Ksenia.Controllers
                     ImageId = y.Id,
                 }).ToArrayAsync();
 
-            var vm = new SpaceshipDeleteViewModel();
+            var vm = new SpaceshipDetailsViewModel();
 
             vm.Id = spaceship.Id;
             vm.Name = spaceship.Name;
@@ -238,7 +231,7 @@ namespace ShopTARgv24_Ksenia.Controllers
             vm.InnerVolume = spaceship.InnerVolume;
             vm.CreatedAt = spaceship.CreatedAt;
             vm.ModifiedAt = spaceship.ModifiedAt;
-            vm.Images.AddRange(images);
+            vm.Image.AddRange(images);
 
             return View(vm);
         }
