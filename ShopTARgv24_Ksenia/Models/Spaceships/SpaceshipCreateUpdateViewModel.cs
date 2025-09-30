@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+
 namespace ShopTARgv24_Ksenia.Models.Spaceships
 {
-    public class SpaceshipCreateUpdateVeiwModel
+    public class SpaceshipCreateUpdateViewModel
     {
         public Guid? Id { get; set; }
         public string? Name { get; set; }
@@ -12,6 +13,10 @@ namespace ShopTARgv24_Ksenia.Models.Spaceships
         public int? EnginePower { get; set; }
         public int? Passengers { get; set; }
         public int? InnerVolume { get; set; }
+
+        public List<IFormFile> Files { get; set; }
+        public List<ImageViewModel> Images { get; set; }
+            = new List<ImageViewModel>();
 
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
