@@ -8,5 +8,7 @@ namespace ShopTARgv24_Ksenia.Core.ServiceInterface
         void FilesToApi(SpaceshipDto dto, Spaceship spaceship);
         Task<FileToApi?> RemoveImageFromApi(FileToApiDto dto);
         Task<List<FileToApi>> RemoveImagesFromAppi(FileToApiDto[] dtos);
+
+        void FilesToDatabase(RealEstateDto dto, RealEstate realEstate);
     }
 }

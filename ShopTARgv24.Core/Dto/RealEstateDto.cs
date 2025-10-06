@@ -12,5 +12,9 @@ namespace ShopTARgv24_Ksenia.Core.Dto
         public string? BuildingType { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
+
+        public List<IFormFile> Files { get; set; }
+        public IEnumerable<FileToDatabaseDto> Image { get; set; } 
+                    = new List<FileToDatabaseDto>();
     }
 }

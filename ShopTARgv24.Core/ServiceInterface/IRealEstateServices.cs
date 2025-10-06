@@ -3,7 +3,7 @@ using ShopTARgv24_Ksenia.Core.Dto;
 
 namespace ShopTARgv24_Ksenia.Core.ServiceInterface
 {
-    public interface IRealEstatesServices
+    public interface IRealEstateServices
     {
         Task< RealEstate> Create( RealEstateDto dto);
         Task< RealEstate> DetailAsync(Guid id);

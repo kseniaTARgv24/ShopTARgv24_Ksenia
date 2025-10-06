@@ -6,7 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShopTARgv24_Ksenia.Core.Domain;
+using ShopTARgv24_Ksenia.Core.Dto;
 using ShopTARgv24_Ksenia.Data;
+using ShopTARgv24_Ksenia.Data.Migrations;
+using ShopTARgv24_Ksenia.Models.Spaceships;
 
 namespace ShopTARgv24_Ksenia.Controllers
 {
@@ -54,16 +57,32 @@ namespace ShopTARgv24_Ksenia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Area,Location,RoomNumber,BuildingType,CreatedAt,ModifiedAt")] RealEstate realEstate)
-        {
+        public async Task<IActionResult> Create(RealEstateCreateUpdateViewModel vm) {             var realEstate = new RealEstate
+            {
+                Id = Guid.NewGuid(),
+                Area = vm.Area,
+                Location = vm.Location,
+                RoomNumber = vm.RoomNumber,
+                BuildingType = vm.BuildingType,
+                CreatedAt = DateTime.UtcNow,
+                ModifiedAt = DateTime.UtcNow,
+                Files = vm.Files,
+                AddImages = vm.Image
+                                    .Select(x => new FileToDatabaseDto
+                                    {
+                                        Id = x.Id,
+                                        ImageData = x.ImageData,
+                                        ImageTitle = x.ImageTitle,
+                                        RealEstateId = x.RealEstateId
+                                    }).ToArray()
+        };
             if (ModelState.IsValid)
             {
-                realEstate.Id = Guid.NewGuid();
                 _context.Add(realEstate);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(realEstate);
+            return View(vm);
         }
 
         // GET: RealEstates/Edit/5
