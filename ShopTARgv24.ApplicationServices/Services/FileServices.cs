@@ -56,9 +56,37 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
             }
         }
 
-        public void FilesToApiForKindergarten(Kindergarten kindergarten)
+        //public void FilesToApiForKindergarten(Kindergarten kindergarten)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public void UploadFilesToDatabase(KindergartenDto dto, Kindergarten domain)
         {
-            throw new NotImplementedException();
+            if (dto.Files != null && dto.Files.Count > 0)
+            {
+                foreach (var file in dto.Files)
+                {
+                    using (var target = new MemoryStream())
+                    {
+                        file.CopyTo(target);
+
+                        var fileToDb = new FileToDatabase
+                        {
+                            Id = Guid.NewGuid(),
+                            ImageTitle = file.FileName,
+                            ImageData = target.ToArray(),
+                            KindergartenId = domain.Id
+                        };
+
+                        _context.FileToDatabases.Add(fileToDb);
+                    }
+                }
+            }
         }
+
+
     }
+
+
 }

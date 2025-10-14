@@ -12,8 +12,8 @@ using ShopTARgv24_Ksenia.Data;
 namespace ShopTARgv24_Ksenia.Data.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20250923160813_AddKindergartenTable")]
-    partial class AddKindergartenTable
+    [Migration("20251014122911_kindergarten")]
+    partial class kindergarten
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

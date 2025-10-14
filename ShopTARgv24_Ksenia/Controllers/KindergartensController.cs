@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ShopTARgv24_Ksenia.ApplicationServices.Services;
 using ShopTARgv24_Ksenia.Core.Domain;
+using ShopTARgv24_Ksenia.Core.ServiceInterface;
 using ShopTARgv24_Ksenia.Data;
 
 namespace ShopTARgv24_Ksenia.Controllers
@@ -13,10 +10,12 @@ namespace ShopTARgv24_Ksenia.Controllers
     public class KindergartensController : Controller
     {
         private readonly ShopContext _context;
+        private readonly IFileServices _fileServices;
 
-        public KindergartensController(ShopContext context)
+        public KindergartensController(ShopContext context, IFileServices fileServices)
         {
             _context = context;
+            _fileServices = fileServices;
         }
 
         // GET: Kindergartens
@@ -54,15 +53,30 @@ namespace ShopTARgv24_Ksenia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,GroupName,ChildrenCount,KindergartenName,TeacherName,CreateAt,UpdateAt")] Kindergarten kindergarten)
+        public async Task<IActionResult> Create(Kindergarten dto)
         {
             if (ModelState.IsValid)
             {
+                var kindergarten = new Kindergarten
+                {
+                    Id = Guid.NewGuid(),
+                    GroupName = dto.GroupName,
+                    ChildrenCount = dto.ChildrenCount,
+                    KindergartenName = dto.KindergartenName,
+                    TeacherName = dto.TeacherName,
+                    CreateAt = DateTime.UtcNow,
+                    UpdateAt = DateTime.UtcNow
+                };
+
                 _context.Add(kindergarten);
                 await _context.SaveChangesAsync();
+
+                _fileServices.UploadFilesToDatabase(dto, kindergarten);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(kindergarten);
+            return View(dto);
         }
 
         // GET: Kindergartens/Edit/5

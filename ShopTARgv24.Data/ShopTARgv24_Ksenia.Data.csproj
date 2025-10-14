@@ -21,4 +21,8 @@
     <ProjectReference Include="..\ShopTARgv24.Core\ShopTARgv24_Ksenia.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

@@ -6,6 +6,7 @@ namespace ShopTARgv24_Ksenia.Core.ServiceInterface
     public interface IFileServices
     {
         void FilesToApi(SpaceshipDto dto, Spaceship spaceship);
-        void FilesToApiForKindergarten(Kindergarten kindergarten);
+        //void FilesToApiForKindergarten(Kindergarten kindergarten);
+        void UploadFilesToDatabase(KindergartenDto dto, Kindergarten kindergarten);
     }
 }

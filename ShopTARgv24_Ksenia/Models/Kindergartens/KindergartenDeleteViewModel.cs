@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ShopTARgv24_Ksenia.Core.Domain;
 
 namespace ShopTARgv24_Ksenia.Models.Kindergartens
 {
@@ -11,5 +12,8 @@ namespace ShopTARgv24_Ksenia.Models.Kindergartens
         public string? TeacherName { get; set; }
         public DateTime? CreateAt { get; set; }
         public DateTime? UpdateAt { get; set; }
+
+        public ICollection<FileToDatabase>? Files { get; set; }
+
     }
 }

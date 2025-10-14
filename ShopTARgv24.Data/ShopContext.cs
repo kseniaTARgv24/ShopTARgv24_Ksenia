@@ -15,6 +15,8 @@ namespace ShopTARgv24_Ksenia.Data
 
         public DbSet<Kindergarten> Kindergartens { get; set; }
 
+        public DbSet<FileToDatabase> FileToDatabases { get; set; }
+
 
     }
 }
