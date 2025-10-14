@@ -3,6 +3,7 @@ using ShopTARgv24_Ksenia.Data;
 using Microsoft.Extensions.Hosting;
 using ShopTARgv24_Ksenia.Core.Domain;
 using ShopTARgv24_Ksenia.Core.ServiceInterface;
+using FileToDatabase = ShopTARgv24_Ksenia.Core.Domain.FileToDatabase;
 
 namespace ShopTARgv24_Ksenia.ApplicationServices.Services
 {
@@ -69,17 +70,16 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
                 {
                     using (var target = new MemoryStream())
                     {
-                        file.CopyTo(target);
-
-                        var fileToDb = new FileToDatabase
+                        FileToDatabase files = new FileToDatabase()
                         {
                             Id = Guid.NewGuid(),
                             ImageTitle = file.FileName,
-                            ImageData = target.ToArray(),
-                            KindergartenId = domain.Id
+                             KindergartenId = (Guid)domain.Id
                         };
+                        file.CopyTo(target);
+                        files.ImageData = target.ToArray();
 
-                        _context.FileToDatabases.Add(fileToDb);
+                        _context.FileToDatabase.Add(files);
                     }
                 }
             }

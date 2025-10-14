@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using ShopTARgv24_Ksenia.ApplicationServices.Services;
 using ShopTARgv24_Ksenia.Core.Domain;
+using ShopTARgv24_Ksenia.Core.Dto;
 using ShopTARgv24_Ksenia.Core.ServiceInterface;
 using ShopTARgv24_Ksenia.Data;
+using ShopTARgv24_Ksenia.Models.Kindergartens;
 
 namespace ShopTARgv24_Ksenia.Controllers
 {
@@ -48,13 +50,11 @@ namespace ShopTARgv24_Ksenia.Controllers
             return View();
         }
 
-        // POST: Kindergartens/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Kindergarten dto)
+        public async Task<IActionResult> Create(KindergartenCreateUpdateVeiwModel dto)
         {
+            var dto = new KindergartenDto()
+
             if (ModelState.IsValid)
             {
                 var kindergarten = new Kindergarten
