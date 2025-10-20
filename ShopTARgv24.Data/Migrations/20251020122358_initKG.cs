@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ShopTARgv24_Ksenia.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class @new : Migration
+    public partial class initKG : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

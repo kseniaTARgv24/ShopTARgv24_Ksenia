@@ -12,8 +12,8 @@ using ShopTARgv24_Ksenia.Data;
 namespace ShopTARgv24_Ksenia.Data.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20251020075412_new")]
-    partial class @new
+    [Migration("20251020122358_initKG")]
+    partial class initKG
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
