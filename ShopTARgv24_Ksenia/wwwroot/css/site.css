@@ -1,31 +1,115 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+﻿/* 🌸 Общий стиль */
 body {
-  margin-bottom: 60px;
+    background-color: #fff0f6;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    color: #444;
+    margin: 0;
+    padding-top: 60px;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* 🌷 Навбар */
+.navbar {
+    background-color: #ff85c0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    .navbar a {
+        color: white !important;
+        font-weight: 500;
+    }
+
+        .navbar a:hover {
+            color: #ffe6f2 !important;
+        }
+
+/* 💖 Контейнер */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* 💅 Карточки и таблицы */
+.card, table {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(255,133,192,0.2);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+}
+
+    .card:hover, table:hover {
+        transform: translateY(-4px);
+    }
+
+/* 🌸 Кнопки */
+.btn-primary {
+    background-color: #ff85c0;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 8px 16px;
+    transition: background 0.2s;
+}
+
+    .btn-primary:hover {
+        background-color: #ff5ca8;
+    }
+
+.btn-danger {
+    background-color: #ff4d6d;
+    border: none;
+}
+
+    .btn-danger:hover {
+        background-color: #ff1f4b;
+    }
+
+/* 🧁 Заголовки */
+h1, h2, h3, h4 {
+    color: #d63384;
+    font-weight: 700;
+}
+
+/* 💫 Таблица */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ffd6e7;
+}
+
+th {
+    background-color: #ffb3d9;
+    color: white;
+}
+
+tr:hover {
+    background-color: #fff5fa;
+}
+
+/* 🌺 Формы */
+input, select, textarea {
+    border: 1px solid #ffb3d9;
+    border-radius: 8px;
+    padding: 8px;
+    width: 100%;
+    font-size: 14px;
+}
+
+    input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: #ff69b4;
+        box-shadow: 0 0 4px rgba(255,105,180,0.3);
+    }
+
+/* 🌼 Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-size: 14px;
 }

@@ -17,6 +17,8 @@ namespace ShopTARgv24_Ksenia
 
             builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
             builder.Services.AddScoped<IFileServices, FileServices>();
+            builder.Services.AddScoped<IWeatherForecastServices, WeatherForecastServices>();
+            //builder.Services.AddScoped<IRealEstatesServices, RealEstatesServices>();
 
             builder.Services.AddDbContext<ShopContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnections")));
