@@ -1,4 +1,4 @@
-﻿@model ShopTARgv24_Ksenia.Core.Domain.Kindergarten
+﻿@model ShopTARgv24_Ksenia.Models.Kindergartens.KindergartenDetailsViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -47,6 +47,13 @@
             @Html.DisplayFor(model => model.UpdateAt)
         </dd>
     </dl>
+    @foreach (var images in Model.Image)
+    {
+        <partial name="_Images" model="images" />
+        <br />
+    }
+    <a asp-action="Index" asp-controller="kindergartens" class="btn btn-secondary m-2">Back</a>
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
