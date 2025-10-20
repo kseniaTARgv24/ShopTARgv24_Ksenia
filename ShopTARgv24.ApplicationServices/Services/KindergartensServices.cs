@@ -9,63 +9,85 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
     public class KindergartensServices : IKindergartensServices
     {
         private readonly ShopContext _context;
+        private readonly IFileServices _fileServices;
 
-        public KindergartensServices(ShopContext context)
+        public KindergartensServices(ShopContext context, IFileServices fileServices)
         {
             _context = context;
+            _fileServices = fileServices;
         }
 
-        public async Task<List<Kindergarten>> GetAllAsync() =>
-            await _context.Kindergartens.ToListAsync();
-
-        public async Task<Kindergarten?> GetByIdAsync(Guid id) =>
-            await _context.Kindergartens.FindAsync(id);
-
-        public async Task<Kindergarten> CreateAsync(Kindergarten kindergarten)
+        public async Task<Kindergarten> Create(KindergartenDto dto)
         {
-            _context.Kindergartens.Add(kindergarten);
+            Kindergarten kindergarten = new Kindergarten();
+
+            kindergarten.Id = Guid.NewGuid();
+            kindergarten.GroupName = dto.GroupName;
+            kindergarten.ChildrenCount = dto.ChildrenCount;
+            kindergarten.KindergartenName = dto.KindergartenName;
+            kindergarten.TeacherName = dto.TeacherName;
+            kindergarten.CreateAt = DateTime.Now;
+            kindergarten.UpdateAt = DateTime.Now;
+
+            if (dto.Files != null)
+            {
+                _fileServices.UploadFilesToDatabase(dto, kindergarten);
+            }
+
+            await _context.Kindergartens.AddAsync(kindergarten);
             await _context.SaveChangesAsync();
+
             return kindergarten;
         }
 
-        public async Task<Kindergarten?> UpdateAsync(Kindergarten kindergarten)
+        public async Task<Kindergarten> DetailAsync(Guid id)
         {
-            var existing = await _context.Kindergartens.FindAsync(kindergarten.Id);
-            if (existing == null) return null;
+            var result = await _context.Kindergartens
+            .FirstOrDefaultAsync(x => x.Id == id);
 
-            _context.Entry(existing).CurrentValues.SetValues(kindergarten);
+            return result;
+        }
+        public async Task<Kindergarten> Update(KindergartenDto dto)
+        {
+            Kindergarten domain = new();
+
+            domain.Id = dto.Id;
+            domain.GroupName = dto.GroupName;
+            domain.ChildrenCount = dto.ChildrenCount;
+            domain.KindergartenName = dto.KindergartenName;
+            domain.TeacherName = dto.TeacherName;
+            domain.CreateAt = dto.CreateAt;
+            domain.UpdateAt = DateTime.Now;
+            _fileServices.UploadFilesToDatabase(dto, domain);
+
+            _context.Kindergartens.Update(domain);
             await _context.SaveChangesAsync();
-            return existing;
+
+            return domain;
         }
 
-        public async Task<Kindergarten?> DeleteAsync(Guid id)
+        public async Task<Kindergarten> Delete(Guid id)
         {
-            var existing = await _context.Kindergartens.FindAsync(id);
-            if (existing == null) return null;
+            var kindergarten = await _context.Kindergartens
+                .FirstOrDefaultAsync(x => x.Id == id);
 
-            _context.Kindergartens.Remove(existing);
+            var images = await _context.FileToDatabase
+                .Where(x => x.KindergartenId == id)
+                .Select(y => new FileToDatabaseDto
+                {
+                    Id = y.Id,
+                    ImageData = y.ImageData,
+                    ImageTitle = y.ImageTitle,
+                    KindergartenId = y.KindergartenId
+                }).ToArrayAsync();
+
+            await _fileServices.RemoveImagesFromDatabase(images);
+
+            _context.Kindergartens.Remove(kindergarten);
             await _context.SaveChangesAsync();
-            return existing;
-        }
 
-        public Task<Kindergarten> Create(KindergartenDto dto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Kindergarten> DetailAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Kindergarten> Delete(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Kindergarten> Update(KindergartenDto dto)
-        {
-            throw new NotImplementedException();
+            return kindergarten;
         }
     }
+
 }

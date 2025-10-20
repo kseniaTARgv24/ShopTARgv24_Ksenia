@@ -14,8 +14,8 @@ namespace ShopTARgv24_Ksenia.Core.Dto
         //Tuleb teha muutuja Files ja see peab olema listis
         public List<IFormFile>? Files { get; set; }
 
-        //public IEnumerable<FileToApiDto> FileToApiDtos { get; set; }
-        //    = new List<FileToApiDto>();
+        public IEnumerable<FileToDatabaseDto> Image { get; set; }
+            = new List<FileToDatabaseDto>();
 
         public DateTime? CreateAt { get; set; }
         public DateTime? UpdateAt { get; set; }

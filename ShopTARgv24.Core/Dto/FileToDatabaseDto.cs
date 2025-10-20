@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShopTARgv24_Ksenia.Core.Dto
 {
-    public class FileToDatabase
+    public class FileToDatabaseDto
     {
         public Guid Id { get; set; }
         public string? ImageTitle { get; set; }

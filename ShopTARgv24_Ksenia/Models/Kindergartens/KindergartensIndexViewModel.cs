@@ -12,7 +12,6 @@ namespace ShopTARgv24_Ksenia.Models.Kindergartens
         public DateTime? CreateAt { get; set; }
         public DateTime? UpdateAt { get; set; }
 
-        public List<IFormFile> Files { get; set; }
 
 
     }

@@ -12,8 +12,8 @@ using ShopTARgv24_Ksenia.Data;
 namespace ShopTARgv24_Ksenia.Data.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20251014122911_kindergarten")]
-    partial class kindergarten
+    [Migration("20251020075412_new")]
+    partial class @new
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,26 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
                     b.HasIndex("SpaceshipId");
 
                     b.ToTable("FileToApis");
+                });
+
+            modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.FileToDatabase", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("ImageTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("KindergartenId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileToDatabase");
                 });
 
             modelBuilder.Entity("ShopTARgv24_Ksenia.Core.Domain.Kindergarten", b =>

@@ -11,6 +11,5 @@ namespace ShopTARgv24_Ksenia.Core.Domain
         public string? TeacherName { get; set; }
         public DateTime? CreateAt { get; set; }
         public DateTime? UpdateAt { get; set; }
-
     }
 }

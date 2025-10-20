@@ -8,5 +8,9 @@ namespace ShopTARgv24_Ksenia.Core.ServiceInterface
         void FilesToApi(SpaceshipDto dto, Spaceship spaceship);
         //void FilesToApiForKindergarten(Kindergarten kindergarten);
         void UploadFilesToDatabase(KindergartenDto dto, Kindergarten domain);
+
+        Task<FileToDatabase> RemoveImageFromDatabase(FileToDatabaseDto dto);
+
+        Task<FileToDatabase> RemoveImagesFromDatabase(FileToDatabaseDto[] dtos);
     }
 }

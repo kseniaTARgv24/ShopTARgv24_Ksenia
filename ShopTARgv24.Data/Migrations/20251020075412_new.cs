@@ -6,11 +6,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ShopTARgv24_Ksenia.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class kindergarten : Migration
+    public partial class @new : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "FileToDatabase",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImageTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageData = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    KindergartenId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FileToDatabase", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Kindergartens",
                 columns: table => new
@@ -89,6 +103,9 @@ namespace ShopTARgv24_Ksenia.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "FileToApis");
+
+            migrationBuilder.DropTable(
+                name: "FileToDatabase");
 
             migrationBuilder.DropTable(
                 name: "Kindergartens");

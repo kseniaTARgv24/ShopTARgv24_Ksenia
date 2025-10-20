@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using ShopTARgv24_Ksenia.Core.Domain;
 using ShopTARgv24_Ksenia.Core.ServiceInterface;
 using FileToDatabase = ShopTARgv24_Ksenia.Core.Domain.FileToDatabase;
+using Microsoft.EntityFrameworkCore;
 
 namespace ShopTARgv24_Ksenia.ApplicationServices.Services
 {
@@ -19,9 +20,7 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
             )
         {
             _context = context;
-            _webHost = webHost;
         }
-
         public void FilesToApi(SpaceshipDto dto, Spaceship spaceship)
         {
             if (dto.Files != null && dto.Files.Count > 0)
@@ -36,7 +35,7 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
                     //muutuja string uploadsFolder ja sinna laetakse failid
                     string uploadsFolder = Path.Combine(_webHost.ContentRootPath, "multipleFileUpload");
                     //muutuja string uniqueFileName ja siin genereeritakse uus Guid ja lisatakse see faili ette
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.Name;
+                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
                     //muutuja string filePath kombineeritakse ja lisatakse koos kausta unikaalse nimega
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
@@ -57,11 +56,7 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
             }
         }
 
-        //public void FilesToApiForKindergarten(Kindergarten kindergarten)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
+        // Salvestab faile andmebaasi
         public void UploadFilesToDatabase(KindergartenDto dto, Kindergarten domain)
         {
             if (dto.Files != null && dto.Files.Count > 0)
@@ -74,8 +69,9 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
                         {
                             Id = Guid.NewGuid(),
                             ImageTitle = file.FileName,
-                             KindergartenId = (Guid)domain.Id
+                            KindergartenId = (Guid)domain.Id
                         };
+
                         file.CopyTo(target);
                         files.ImageData = target.ToArray();
 
@@ -85,8 +81,38 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
             }
         }
 
+        // Eemaldab ühe pildi andmebaasist
+        public async Task<FileToDatabase> RemoveImageFromDatabase(FileToDatabaseDto dto)
+        {
+            var imageId = await _context.FileToDatabase
+                .FirstOrDefaultAsync(x => x.Id == dto.Id);
 
+            if (imageId != null)
+            {
+                _context.FileToDatabase.Remove(imageId);
+                await _context.SaveChangesAsync();
+
+                return imageId;
+            }
+
+            return null;
+        }
+
+        // Eemaldab kõik faile andmebaasist
+        public async Task<FileToDatabase> RemoveImagesFromDatabase(FileToDatabaseDto[] dtos)
+        {
+            foreach (var dto in dtos)
+            {
+                var imageId = await _context.FileToDatabase
+                    .FirstOrDefaultAsync(x => x.Id == dto.Id);
+
+                if (imageId != null)
+                {
+                    _context.FileToDatabase.Remove(imageId);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            return null;
+        }
     }
-
-
 }
