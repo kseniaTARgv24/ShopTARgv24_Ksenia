@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ShopTARgv24_Ksenia.Core.Dto
 
-namespace ShopTARgv24_Ksenia.Core.Dto
 {
     public class AccuLocationRootDto
     {
-        public Headline? Headline { get; set; }
+        public Headline Headline { get; set; }
         public Dailyforecast[] DailyForecasts { get; set; }
     }
 
@@ -19,7 +14,7 @@ namespace ShopTARgv24_Ksenia.Core.Dto
         public int Severity { get; set; }
         public string Text { get; set; }
         public string Category { get; set; }
-        public DateTime EndDate { get; set; }
+        public string EndDate { get; set; }
         public int EndEpochDate { get; set; }
         public string MobileLink { get; set; }
         public string Link { get; set; }
@@ -52,7 +47,7 @@ namespace ShopTARgv24_Ksenia.Core.Dto
 
     public class Maximum
     {
-        public int Value { get; set; }
+        public double Value { get; set; }
         public string Unit { get; set; }
         public int UnitType { get; set; }
     }
@@ -72,6 +67,4 @@ namespace ShopTARgv24_Ksenia.Core.Dto
         public string IconPhrase { get; set; }
         public bool HasPrecipitation { get; set; }
     }
-
 }
-
