@@ -1,10 +1,6 @@
-﻿using System;
-using Humanizer;
-using Microsoft.AspNetCore.Mvc;
-using ShopTARgv24_Ksenia.Core.Dto;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShopTARgv24_Ksenia.Core.ServiceInterface;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Net.WebRequestMethods;
+
 
 namespace ShopTARgv24_Ksenia.Controllers
 {
