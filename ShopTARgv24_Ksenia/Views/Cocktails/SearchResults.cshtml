@@ -1,0 +1,24 @@
+﻿@model ShopTARgv24_Ksenia.Core.Dto.CocktailSearchResultDto
+
+<h2>Results</h2>
+
+@if(Model?.drinks == null || !Model.drinks.Any())
+{
+	<p>nono</p>
+}
+else
+{
+    <div class="row">
+        @foreach (var d in Model.drinks)
+        {
+            <div class="col-md-4">
+                <div class="card p-2 mb-3">
+                    <img src="@d.strDrinkThumb" class="img-fluid rounded" alt="@d.strDrink" />
+                    <h5 class="mt-2">@d.strDrink</h5>
+                    <p><strong>Category:</strong> @d.strCategory | <strong>Alcoholic:</strong> @d.strAlcoholic</p>
+                    <a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@d.idDrink">Details</a>
+                </div>
+            </div>
+        }
+    </div>
+}

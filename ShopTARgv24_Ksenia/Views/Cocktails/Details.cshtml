@@ -1,0 +1,28 @@
+﻿@model ShopTARgv24_Ksenia.Core.Dto.DrinkDto
+
+<h2>@Model.strDrink</h2>
+
+<img src="@Model.strDrinkThumb" class="img-fluid mb-3" style="max-width:300px;" />
+
+<p><strong>Инструкции:</strong></p>
+<p>@Model.strInstructions</p>
+
+<h4>Ингредиенты</h4>
+<ul>
+    @{
+        // собираем пары measure + ingredient
+        for (int i = 1; i <= 15; i++)
+        {
+            var ingrProp = Model.GetType().GetProperty($"strIngredient{i}");
+            var measProp = Model.GetType().GetProperty($"strMeasure{i}");
+            var ingr = ingrProp?.GetValue(Model) as string;
+            var meas = measProp?.GetValue(Model) as string;
+
+            if (!string.IsNullOrWhiteSpace(ingr))
+            {
+                <li>@(string.IsNullOrWhiteSpace(meas) ? "" : (meas + " "))@ingr</li>
+            }
+        }
+    }
+</ul>
+

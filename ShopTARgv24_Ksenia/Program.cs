@@ -18,11 +18,17 @@ namespace ShopTARgv24_Ksenia
             builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
             builder.Services.AddScoped<IFileServices, FileServices>();
             builder.Services.AddScoped<IWeatherForecastServices, WeatherForecastServices>();
-            //builder.Services.AddScoped<IRealEstatesServices, RealEstatesServices>();
+        
 
             builder.Services.AddDbContext<ShopContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnections")));
 
+          
+            builder.Services.AddHttpClient<ICocktailService, CocktailServices>(client =>
+            {
+                client.BaseAddress = new Uri("https://www.thecocktaildb.com/api/json/v1/1/");
+                client.Timeout = TimeSpan.FromSeconds(10);
+            });
 
             var app = builder.Build();
 
