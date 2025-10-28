@@ -22,8 +22,8 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
             if (string.IsNullOrWhiteSpace(name)) return null;
 
             // кодируем имя в URL
-            var q = Uri.EscapeDataString(name.Trim());
-            var url = $"{BaseUrl}search.php?s={q}"; // пример: search.php?s=margarita
+            var q = Uri.EscapeDataString(name.Trim()); //This method returns a string which contains the escaped representation of stringToEscape.
+            var url = $"{BaseUrl}search.php?s={q}"; // пример: search.php?s=margarita название происходит и только по паре букв
 
             var resp = await _http.GetAsync(url);
             if (!resp.IsSuccessStatusCode) return null;
