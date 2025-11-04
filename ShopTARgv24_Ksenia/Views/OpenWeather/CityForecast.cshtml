@@ -1,0 +1,109 @@
+﻿@model ShopTARgv24_Ksenia.Models.OpenWeather.OpenWeatherViewModel
+
+@{
+    ViewData["Title"] = "Weather Forecast";
+}
+
+<div class="weather-container">
+    <h2>Weather in @Model.CityName, @Model.RegionName</h2>
+
+    <div class="weather-card">
+        <div class="weather-main">
+            @* <img src="https://openweathermap.org/img/wn/@(Model.WeatherIcon)@2x.png" 
+                 alt="Weather Icon" 
+                 class="weather-icon" /> *@
+
+            <div class="temp-block">
+                <h1>@Model.Temperature?.ToString("0")°C</h1>
+                <p>@Model.WeatherDescription</p>
+                <p class="feels-like">Feels like: @Model.FeelsLike?.ToString("0")°C</p>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="weather-details">
+            <div><strong>Humidity:</strong> @Model.Humidity%</div>
+            <div><strong>Pressure:</strong> @Model.Pressure</div>
+            <div><strong>Wind Speed:</strong> @Model.WindSpeed m/s</div>
+            <div><strong>Min/Max Temp:</strong> @Model.Temp_Min_Max?.ToString("0.0")°C</div>
+            <div><strong>Sunrise:</strong> @Model.Sunrise</div>
+            <div><strong>Sunset:</strong> @Model.Sunset</div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .weather-container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .weather-container h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+    }
+
+    .weather-card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+    }
+
+    .weather-main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .weather-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .temp-block h1 {
+        margin: 0;
+        font-size: 48px;
+        color: #0078D7;
+    }
+
+    .temp-block p {
+        margin: 4px 0;
+        color: #666;
+    }
+
+    .feels-like {
+        font-style: italic;
+        font-size: 14px;
+        color: #888;
+    }
+
+    .weather-details {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px 20px;
+        font-size: 15px;
+        color: #444;
+    }
+
+    .weather-details div {
+        background-color: #f3f3f3;
+        padding: 8px 10px;
+        border-radius: 8px;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #ddd;
+        margin: 15px 0;
+    }
+</style>
+
