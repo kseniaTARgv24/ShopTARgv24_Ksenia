@@ -62,8 +62,8 @@ namespace ShopTARgv24_Ksenia.Controllers
                 ChildrenCount = vm.ChildrenCount,
                 KindergartenName = vm.KindergartenName,
                 TeacherName = vm.TeacherName,
-                CreateAt = vm.CreateAt,
-                UpdateAt = vm.UpdateAt,
+                CreateAt = DateTime.UtcNow,
+                UpdateAt = DateTime.UtcNow,
                 Files = vm.Files,
                 Image = vm.Image
                     .Select(x =>
@@ -125,8 +125,8 @@ namespace ShopTARgv24_Ksenia.Controllers
                 ChildrenCount = vm.ChildrenCount,
                 KindergartenName = vm.KindergartenName,
                 TeacherName = vm.TeacherName,
-                CreateAt = vm.CreateAt,
-                UpdateAt = vm.UpdateAt,
+                CreateAt = DateTime.UtcNow,
+                UpdateAt =  DateTime.UtcNow,
                 Files = vm.Files,
                 Image = vm.Image
                     .Select(x => new FileToDatabaseDto

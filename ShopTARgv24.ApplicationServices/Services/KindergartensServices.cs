@@ -26,8 +26,14 @@ namespace ShopTARgv24_Ksenia.ApplicationServices.Services
             kindergarten.ChildrenCount = dto.ChildrenCount;
             kindergarten.KindergartenName = dto.KindergartenName;
             kindergarten.TeacherName = dto.TeacherName;
-            kindergarten.CreateAt = DateTime.Now;
-            kindergarten.UpdateAt = DateTime.Now;
+            kindergarten.CreateAt = dto.CreateAt == DateTime.MinValue
+                ? DateTime.UtcNow
+                : dto.CreateAt;
+
+            kindergarten.UpdateAt = dto.UpdateAt == DateTime.MinValue
+                ? DateTime.UtcNow
+                : dto.UpdateAt;
+
 
             if (dto.Files != null)
             {

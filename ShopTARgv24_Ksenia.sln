@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARgv24_Ksenia.Applicat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARgv24_Ksenia.Data", "ShopTARgv24.Data\ShopTARgv24_Ksenia.Data.csproj", "{2F424CB5-A472-4860-B367-FB9E97D93F4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARgv24_Ksenia.KindergartenTest", "ShopTARgv24_Ksenia.KindergartenTest\ShopTARgv24_Ksenia.KindergartenTest.csproj", "{59477B6B-3DEC-4344-954E-4A96A515B7DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2F424CB5-A472-4860-B367-FB9E97D93F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F424CB5-A472-4860-B367-FB9E97D93F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F424CB5-A472-4860-B367-FB9E97D93F4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59477B6B-3DEC-4344-954E-4A96A515B7DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59477B6B-3DEC-4344-954E-4A96A515B7DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59477B6B-3DEC-4344-954E-4A96A515B7DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59477B6B-3DEC-4344-954E-4A96A515B7DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

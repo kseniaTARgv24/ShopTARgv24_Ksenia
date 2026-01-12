@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="obj\Debug\net9.0\.NETCoreApp,Version=v9.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net9.0\KindergartenTest.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net9.0\KindergartenTest.GlobalUsings.g.cs" />
+    <Compile Include="obj\Debug\net9.0\shop.KindergartenTest.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net9.0\shop.KindergartenTest.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="obj\KindergartenTest.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="obj\shop.KindergartenTest.csproj.nuget.dgspec.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".vs\shop.KindergartenTest\CopilotIndices\17.14.1091.29919\CodeChunks.db" />
+    <None Include=".vs\shop.KindergartenTest\CopilotIndices\17.14.1091.29919\SemanticSymbols.db" />
+    <None Include=".vs\shop.KindergartenTest\FileContentIndex\03544a69-837e-453c-a88e-86c2b703fbeb.vsidx" />
+    <None Include=".vs\shop.KindergartenTest\FileContentIndex\cc033c0e-7250-4641-9efd-b8828beb7eaf.vsidx" />
+    <None Include=".vs\shop.KindergartenTest\v17\.futdcache.v2" />
+    <None Include=".vs\shop.KindergartenTest\v17\.suo" />
+    <None Include="obj\Debug\net9.0\KindergartenTest.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net9.0\KindergartenTest.assets.cache" />
+    <None Include="obj\Debug\net9.0\KindergartenTest.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net9.0\KindergartenTest.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net9.0\shop.KindergartenTest.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net9.0\shop.KindergartenTest.assets.cache" />
+    <None Include="obj\Debug\net9.0\shop.KindergartenTest.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net9.0\shop.KindergartenTest.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\KindergartenTest.csproj.nuget.g.props" />
+    <None Include="obj\KindergartenTest.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
+    <None Include="obj\shop.KindergartenTest.csproj.nuget.g.props" />
+    <None Include="obj\shop.KindergartenTest.csproj.nuget.g.targets" />
+    <None Include="ShopTARgv24_Ksenia.KindergartenTest.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net9.0\" />
+    <Folder Include="obj\Debug\net9.0\refint\" />
+    <Folder Include="obj\Debug\net9.0\ref\" />
+  </ItemGroup>
+
+</Project>
